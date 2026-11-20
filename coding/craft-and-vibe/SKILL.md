@@ -4,7 +4,7 @@ description: Build code by combining creative intent with disciplined engineerin
 license: Apache-2.0
 metadata:
   domain: coding
-  version: "0.4.0"
+  version: "0.5.0"
   status: experimental
 user-invocable: true
 ---
@@ -23,6 +23,30 @@ Treat the user's description as the brief. Infer what is safe to infer, ask when
 6. **Prove it.** Choose checks by risk: unit tests for logic, integration tests for boundaries, end-to-end tests for critical journeys, and manual inspection for visual details. Test normal use, invalid input, empty/missing data, boundaries, failure paths and relevant permissions. For fixes, include a regression check. Inspect diffs for unintended changes. Exercise visual/interactive paths, including responsiveness and keyboard access where applicable. If a check cannot run, say why. Never report an unrun test as passing.
 7. **Exit clean.** Deliver the result, what changed, how to run it, exact checks and outcomes, assumptions, limitations and unverified areas. Mention operational requirements or migrations. Offer the next useful increment without gold-plating.
 
+
+## Optional open-source development tools
+
+Prefer the project's existing toolchain. These free, open-source tools can
+improve common build and verification workflows:
+
+- [Git](https://github.com/git/git) — version control and reviewable changes.
+- [pytest](https://github.com/pytest-dev/pytest) — Python tests.
+- [Ruff](https://github.com/astral-sh/ruff) — Python linting and formatting.
+- [Playwright](https://github.com/microsoft/playwright) — browser automation
+  and end-to-end testing.
+- [Godot](https://github.com/godotengine/godot) — open-source game engine for
+  2D/3D playable projects.
+
+Choose tools by language, runtime and project needs; do not add all of them to
+every project. Check the official repository for current installation and
+platform requirements.
+
+**On activation:** inspect the repository, installed runtimes and existing
+test/build commands first. If a relevant capability is missing, ask:
+"Would you like me to integrate or set up [tool] in this workspace?" Explain
+the benefit and any footprint before asking. Do not install packages, modify
+configuration or add dependencies without approval. In chat-only clients,
+offer copyable setup steps or a handoff to a workspace-connected agent.
 
 ## Game creation and iteration
 
