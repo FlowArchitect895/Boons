@@ -16,8 +16,8 @@ This is a short list of primary project and documentation links used by the Boon
 | Resource | Use |
 |---|---|
 | [OpenAI Codex](https://github.com/openai/codex) | Workspace-connected coding agent and CLI |
-| [Codex MCP setup](https://learn.chatgpt.com/docs/extend/mcp?surface=cli) | Codex MCP configuration |
-| [Claude Code](https://code.claude.com/docs) | Workspace-connected coding agent, skills, and MCP |
+| [OpenAI Developers Docs MCP](https://developers.openai.com/learn/docs-mcp) | Official Codex MCP configuration example |
+| [Claude Code MCP guide](https://code.claude.com/docs/en/mcp) | Workspace-connected coding agent and MCP setup |
 | [Ollama](https://github.com/ollama/ollama) | Run supported models locally |
 | [Docker](https://github.com/docker) | Local containers and reproducible labs |
 | [Microsoft WSL documentation](https://learn.microsoft.com/windows/wsl/) | Linux environments on Windows |
