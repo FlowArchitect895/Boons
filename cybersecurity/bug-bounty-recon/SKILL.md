@@ -4,7 +4,7 @@ description: Review written bounty scope, organize passive evidence, plan author
 license: Apache-2.0
 metadata:
   domain: cybersecurity
-  version: "0.3.0"
+  version: "0.4.0"
   status: experimental
 user-invocable: true
 ---
@@ -78,6 +78,32 @@ hostname is local or authorized from its name alone.
 - Impact and severity rationale, or why these remain undetermined
 - Missing evidence and safe next question
 - Duplicate relationship and disclosure status
+
+## Optional open-source collection tools
+
+These free, open-source projects can support an authorized operator's
+collection workflow. They do not change this skill's default evidence-review
+mode or enable target-facing execution:
+
+- [OWASP Amass](https://github.com/owasp-amass/amass) — attack-surface
+  mapping and asset discovery.
+- [Subfinder](https://github.com/projectdiscovery/subfinder) — passive
+  subdomain discovery.
+- [httpx](https://github.com/projectdiscovery/httpx) — HTTP service probing.
+- [Nuclei](https://github.com/projectdiscovery/nuclei) — template-based
+  vulnerability checks; active requests require explicit authorization and
+  program-rule review.
+
+Treat collection output as leads, not confirmed findings. Confirm scope,
+program rules, rate limits, exclusions and permitted methods before any
+operator runs a tool. Do not run these tools from this skill version.
+
+**On activation:** identify whether the task is evidence-only or needs a
+collection plan. Check whether the user already has suitable tools. Ask:
+"Would you like help setting up any of these free tools for your authorized
+workspace?" Never install or launch them automatically. If the host is
+chat-only, provide a user-run setup guide or request sanitized output. Never
+send secrets, cookies or private program data to third-party services.
 
 ## Stop or narrow
 
