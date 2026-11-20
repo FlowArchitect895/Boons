@@ -4,7 +4,7 @@ description: Plan and review defensive security work with explicit authorization
 license: Apache-2.0
 metadata:
   domain: cybersecurity
-  version: "0.3.0"
+  version: "0.4.0"
   status: experimental
 user-invocable: true
 ---
@@ -62,6 +62,28 @@ method; it does not grant access, permissions or execution capability.
 9. **Report limits.** State what was reviewed, tools actually run, evidence
    unavailable, unresolved questions and what would change the conclusion.
    Never describe a possibility as confirmed.
+
+## Optional open-source tools
+
+These tools are free and open source. They are optional helpers, not
+requirements and not proof that a finding is valid:
+
+- [OWASP ZAP](https://github.com/zaproxy/zaproxy) — web application security
+  testing for owned systems and authorized test environments.
+- [Semgrep Community Edition](https://github.com/semgrep/semgrep) — static
+  analysis and code-pattern checks.
+- [Trivy](https://github.com/aquasecurity/trivy) — dependency, filesystem,
+  container and configuration vulnerability/misconfiguration checks.
+- [Gitleaks](https://github.com/gitleaks/gitleaks) — detect exposed secrets in
+  repositories and history.
+
+**On activation:** inspect which relevant tools are already available in the
+connected workspace. Recommend only tools that materially help this task.
+Ask: "Would you like me to help integrate or set up any of these free tools in
+this workspace?" Do not install, configure, execute or change project files
+until the user agrees. In chat-only clients, explain that you cannot reach the
+user's machine and offer commands or a handoff instead. Check each tool's
+official installation instructions and license before use.
 
 ## Stop or narrow
 
