@@ -42,8 +42,8 @@ Agensi is not required. The GitHub route remains available if you prefer manual 
 
 These workspace-connected agents are recommended for implementation work because they can operate on a project when the user grants the relevant access.
 
-- [Codex MCP configuration](https://learn.chatgpt.com/docs/extend/mcp?surface=cli)
-- [Claude Code documentation](https://code.claude.com/docs)
+- [OpenAI Codex](https://github.com/openai/codex) — product and CLI source.
+- [Claude Code MCP guide](https://code.claude.com/docs/en/mcp) — remote and local MCP setup, authentication, and connection checks.
 
 Connect Agensi using the current client-specific instructions. Then verify the connection in the agent before relying on it. Keep repository permissions, terminal permissions, and external tool permissions scoped to the task.
 
