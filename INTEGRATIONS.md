@@ -12,7 +12,11 @@ Boons can be used from GitHub, distributed through Agensi, installed as local Ag
 4. Complete the sign-in and authorization flow.
 5. Ask the connected agent to find and use Boons for the task.
 
-Agensi provides a convenient distribution and MCP access route. The host agent still determines available context, tools, workspace access, and execution permissions.
+Agensi provides a convenient distribution and MCP access route. The user has
+previously tested the Boons Agensi integration and reported that it worked.
+That test does not establish compatibility with every client or every account
+configuration. The host agent still determines available context, tools,
+workspace access, and execution permissions.
 
 Agensi's current MCP documentation specifies:
 
@@ -74,6 +78,16 @@ REA is not a guarantee against an agent's permission restrictions. Tool access r
 A local model can use Boons instructions directly if the host application supplies them. To use Agensi, the local application must also implement a compatible MCP client and authentication flow.
 
 For a custom workspace such as Odysseus, a coding agent can help implement and test the integration. Alternatively, developers can build their own adapter. Treat this as a software project: define the MCP client boundary, credential storage, tool schemas, error handling, permissions, and tests before connecting it to a model.
+
+## Free and open-source tool policy
+
+Boons recommends free/open-source tools and public repositories in its skill
+workflows. No paid subscription is required for the optional tools listed in
+the skills. Some upstream projects also sell commercial editions or offer
+hosted services; use only the free/open-source component identified by the
+skill, read its license and feature boundaries, and do not assume every feature
+is free. Do not recommend paid-only features as prerequisites. Users may skip
+all optional integrations and still use the skill instructions.
 
 ## Integration boundaries
 
