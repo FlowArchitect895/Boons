@@ -20,12 +20,12 @@ available for manual installation and custom integrations.
 
 | Skill | Purpose | Version |
 |---|---|---:|
-| `cybersecurity/security-methods` | Evidence-led defensive security analysis | 0.2.0 |
-| `cybersecurity/bug-bounty-recon` | Scope-first bounty research and triage | 0.2.0 |
+| `cybersecurity/security-methods` | Evidence-led defensive security analysis | 0.3.0 |
+| `cybersecurity/bug-bounty-recon` | Scope-first bounty research and triage | 0.3.0 |
 | `coding/craft-and-vibe` | Creative engineering, game creation and layered verification | 0.4.0 |
-| `creative/systems-synthesis` | Original systems built from high-level patterns | 0.2.0 |
+| `creative/systems-synthesis` | Original systems built from high-level patterns | 0.3.0 |
 | `creative/voice-and-edit` | Fact-preserving editing that preserves authorial character | 0.2.0 |
-| `meta/rea-amplify` | Authorized artifact analysis that grounds another skill | 0.2.0 |
+| `meta/rea-amplify` | Authorized artifact analysis that grounds another skill | 0.3.0 |
 
 `craft-and-vibe` includes a game-development workflow: player promise, core
 loop, state and mechanic design, iterative implementation, balance review, and
@@ -52,7 +52,7 @@ filesystems and tools.
    optional REA.
 3. **[Installation](INSTALL.md)** — install selected skills from GitHub.
 4. **[Reference directory](REFERENCES.md)** — primary project and tool links.
-5. **[Testing record](TESTING.md)** — what has been tested and what remains open.
+5. **[Team workflow](WORKFLOWS.md)** — how to coordinate the skills without blurring their roles.\n6. **[Testing record](TESTING.md)** — what has been tested and what remains open.
 
 ### Agensi quick start
 
