@@ -52,7 +52,8 @@ filesystems and tools.
    optional REA.
 3. **[Installation](INSTALL.md)** — install selected skills from GitHub.
 4. **[Reference directory](REFERENCES.md)** — primary project and tool links.
-5. **[Team workflow](WORKFLOWS.md)** — how to coordinate the skills without blurring their roles.\n6. **[Testing record](TESTING.md)** — what has been tested and what remains open.
+5. **[Team workflow](WORKFLOWS.md)** — how to coordinate the skills without blurring their roles.
+6. **[Testing record](TESTING.md)** — what has been tested and what remains open.
 
 ### Agensi quick start
 
