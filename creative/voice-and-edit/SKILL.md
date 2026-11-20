@@ -4,7 +4,7 @@ description: Draft or revise writing while preserving facts, authorial character
 license: Apache-2.0
 metadata:
   domain: creative
-  version: "0.2.0"
+  version: "0.3.0"
   status: experimental
 user-invocable: true
 ---
@@ -37,6 +37,22 @@ Use a general voice selected by the user (direct, warm, formal, plainspoken, etc
 6. **Edit to the brief.** Make changes justified by mode and intensity. Preserve perspective, intent, register and certainty. Do not add claims, examples, technical detail or emotional interpretation unsupported by the source.
 7. **Run the genericity check.** Ask: could this revised passage belong to almost anyone? Have distinctive expressions become stock phrases? Is it smoother but less precise or forceful? Has a specific thought become a conventional but different argument? Restore distinctive expression or explain the trade-off.
 8. **Return transparently.** Provide the revised text and briefly state intensity and meaningful edits. Keep a substantial alternative separate from the faithful edit so the user can compare.
+
+## Optional open-source writing tools
+
+- [Vale](https://github.com/errata-ai/vale) — configurable prose and
+  documentation style linter that can run locally and offline.
+
+Vale checks consistency against configured style rules; it does not judge
+meaning, truth, authorial intent or whether an edit preserves someone's voice.
+Use it as a secondary check, never as the editor or final authority.
+
+**On activation:** first establish whether the user wants prose linting or
+documentation consistency checks. If the project has repeated documentation
+or a style guide, check whether Vale is already installed. Ask:
+"Would you like me to integrate the free Vale linter into this workspace?"
+Do not install it or create/change style rules without approval. For a
+one-off chat edit, do not suggest a tool unnecessarily.
 
 ## Stop or narrow
 

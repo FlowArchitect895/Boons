@@ -1,8 +1,7 @@
 # Installing Boons
 
-Each Boon is a folder with a `SKILL.md` file. Installing one means putting that
-folder where your assistant looks for skills. You can install all six or only
-the ones you want.
+Each Boon is a folder containing `SKILL.md`. Install all six or select only
+the skills you need.
 
 | Boon | Folder |
 |---|---|
@@ -13,51 +12,45 @@ the ones you want.
 | voice-and-edit | `creative/voice-and-edit` |
 | rea-amplify | `meta/rea-amplify` |
 
-Skills load when a session starts, so start a new session after installing.
+## Choose an installation route
 
-## Where assistants look for skills
+### Option 1: Agensi (recommended quick connection)
 
-| Assistant | Personal (all your projects) | Project (one repository) |
-|---|---|---|
-| Claude Code | `~/.claude/skills/` | `.claude/skills/` |
-| GitHub Copilot (VS Code) | `~/.copilot/skills/` | `.github/skills/` |
-| OpenAI Codex | `~/.agents/skills/` | `.agents/skills/` |
+[Open Boons on Agensi](https://www.agensi.io/skills/boons). Sign in, follow the
+current MCP setup for your agent, complete authorization, and ask the connected
+agent to use Boons.
 
-Other assistants: check their documentation for their Agent Skills location, or
-use the Skills CLI below, which knows the locations of many assistants.
+Agensi is useful when you want marketplace distribution and on-demand access
+without manually copying skill folders. The host agent still controls workspace,
+terminal and tool access. See [INTEGRATIONS.md](INTEGRATIONS.md) for account
+connection behavior, supported-client caveats and local-agent integration.
 
-On Windows, `~` is your user folder, for example `C:\Users\you\.claude\skills\`.
+### Option 2: Skills CLI (GitHub)
 
----
+The [Skills CLI](https://github.com/vercel-labs/skills) installs skills into
+supported agents. It requires Node.js; check the CLI's current requirements.
 
-## Local workspaces
+```sh
+DISABLE_TELEMETRY=1 npx skills add FlowArchitect895/boons
+```
 
-### Option 1: the Skills CLI (easiest)
-
-Needs Node.js 22.20 or later.
+For a global install:
 
 ```sh
 DISABLE_TELEMETRY=1 npx skills add FlowArchitect895/boons -g
 ```
 
-It asks which Boons and which assistants to install for. `-g` installs for all
-your projects; leave it off to install into the current project only. To pick
-one Boon and one assistant directly:
+To install one skill for Claude Code:
 
 ```sh
 DISABLE_TELEMETRY=1 npx skills add FlowArchitect895/boons --skill craft-and-vibe -a claude-code -g
 ```
 
-`DISABLE_TELEMETRY=1` stops the CLI reporting which skills you installed.
-Update later with `npx skills update`, remove with `npx skills remove`.
+The CLI can report installation telemetry unless disabled. Update and remove
+skills using the CLI's current commands. Verify its current agent list and
+installation destination before relying on it.
 
-On Windows PowerShell, set the variable first:
-
-```powershell
-$env:DISABLE_TELEMETRY = "1"; npx skills add FlowArchitect895/boons -g
-```
-
-### Option 2: clone and copy (no Node needed)
+### Option 3: clone and copy (no Node required)
 
 ```sh
 git clone https://github.com/FlowArchitect895/Boons.git
@@ -65,89 +58,99 @@ mkdir -p ~/.claude/skills
 cp -r Boons/coding/craft-and-vibe ~/.claude/skills/
 ```
 
-Repeat the `cp` line for each Boon you want, and swap `~/.claude/skills` for
-your assistant's folder from the table above.
+Repeat the copy command for each selected skill and use the documented skill
+directory for your agent.
 
-### Option 3: clone and link (stays up to date)
+### Option 4: clone and link (Linux, macOS or WSL)
 
-On Linux, macOS or WSL, a symbolic link means a `git pull` in the clone updates
-the installed Boon:
+A symbolic link lets a `git pull` in the clone update the installed skill.
 
 ```sh
 git clone https://github.com/FlowArchitect895/Boons.git ~/Boons
+mkdir -p ~/.claude/skills
 ln -s ~/Boons/coding/craft-and-vibe ~/.claude/skills/craft-and-vibe
 ```
 
-On Windows, links need Developer Mode or an administrator shell; use Option 2
-there.
+Use the equivalent skill directory for your agent. On Windows, links may
+require Developer Mode or an administrator shell.
 
-### Option 4: download the ZIP
+### Option 5: download ZIP
 
-On the repository page choose **Code → Download ZIP**, unzip it, and copy the
-Boon folders you want into your assistant's skills folder.
+On GitHub choose **Code → Download ZIP**, extract it, and copy the selected
+skill folders into the agent's documented skills directory.
 
----
+## Common skill locations
 
-## Cloud workspaces
+| Agent | Personal | Project |
+|---|---|---|
+| Claude Code | `~/.claude/skills/` | `.claude/skills/` |
+| GitHub Copilot (VS Code) | `~/.copilot/skills/` | `.github/skills/` |
+| OpenAI Codex | `~/.agents/skills/` | `.agents/skills/` |
 
-In a cloud workspace your home folder is usually temporary or not yours, so
-the reliable route is to install Boons **into the project repository** and
-commit them. Every session that opens the repository then has them.
+Agent support and skill discovery behavior can change. Check the current
+documentation for your specific client. Other assistants may use different
+directories or support skills through MCP instead of local files.
 
-### Into a repository (works for most cloud agents)
+## WSL and Linux workspaces
 
-From the root of your project:
+Use Ubuntu WSL for general development, coding and local-model work; use Kali
+WSL for security tooling and controlled labs when appropriate. These are
+separate environments unless you deliberately connect them.
+
+Before running commands, verify the working directory, Git root, active
+container, network binding and permissions. A chat assistant does not gain
+access to WSL merely because WSL is running on your computer.
+
+For local labs, bind services to loopback when external access is unnecessary.
+Keep credentials and session tokens out of screenshots, logs, commits and
+shared evidence.
+
+## Cloud and project workspaces
+
+For a project-specific install, place skills in the agent's documented project
+directory and commit them with the project only when appropriate. For example,
+Claude Code uses `.claude/skills/`; Codex uses `.agents/skills/`.
+
+Cloud home directories may be temporary. Prefer project-level installation or
+the provider's documented setup hook. Confirm the current client behavior
+before adding automated install commands to a development container.
+
+## Local models and custom agents
+
+A local model can follow skill instructions when its application supplies them.
+It cannot use Agensi MCP unless the surrounding application implements a
+compatible MCP client and authentication flow.
+
+For a custom workspace such as Odysseus, use a coding agent or implement your
+own adapter to handle MCP transport, authentication, tool discovery/invocation,
+context passing, permissions and errors. This is a software integration, not
+a skill-only installation. See [INTEGRATIONS.md](INTEGRATIONS.md).
+
+## Optional REA integration
+
+The `rea-amplify` Boon does not require REA software. To add REA's independent
+MCP tools and workflows, follow the official
+[REA repository](https://github.com/morluto/rea) and its current setup guide.
+The upstream quick start currently documents:
 
 ```sh
-DISABLE_TELEMETRY=1 npx skills add FlowArchitect895/boons
+npx rea-agents setup
 ```
 
-or copy the folders yourself:
+Review proposed configuration changes before approving them. REA, Ghidra and
+other analysis engines have their own requirements and permissions.
 
-```sh
-git clone --depth 1 https://github.com/FlowArchitect895/Boons.git /tmp/Boons
-mkdir -p .claude/skills
-cp -r /tmp/Boons/coding/craft-and-vibe .claude/skills/
-git add .claude/skills && git commit -m "Add Boons skills"
-```
+## Verify installation
 
-Use `.claude/skills/` for Claude Code, `.github/skills/` for GitHub Copilot and
-`.agents/skills/` for Codex. You can keep more than one.
-
-- **Claude Code in the cloud** (claude.ai/code and other cloud sessions) loads
-  the repository's `.claude/skills/`.
-- **GitHub Copilot coding agent** works in your repository, so skills in
-  `.github/skills/` travel with it.
-- **GitHub Codespaces and dev containers** behave like a local machine, but the
-  home folder resets when the container is rebuilt. Use the project folders
-  above, or install at creation time with a `postCreateCommand` in
-  `.devcontainer/devcontainer.json`:
-
-  ```json
-  "postCreateCommand": "DISABLE_TELEMETRY=1 npx -y skills add FlowArchitect895/boons -g -y"
-  ```
-
-### Claude apps (claude.ai web and desktop)
-
-Where your plan supports custom skills, you can upload a Boon as a ZIP: zip one
-Boon folder so `SKILL.md` sits at the top of the folder, then upload it under
-the app's skills settings. Feature names and plan availability change, so check
-Claude's current help pages.
-
----
-
-## Check it worked
-
-Start a new session and ask the assistant which skills it has, or ask for a
-task one Boon covers, for example "build me a small CLI that counts word
-frequencies" for craft-and-vibe. In Claude Code the installed Boons also appear
-in the `/` menu.
+Start a new agent session and ask it to identify the installed Boons or perform
+a representative task. In a coding agent, confirm that it can see the intended
+project before asking it to edit files or run commands.
 
 ## Notes
 
-- Boons are instructions only. They include no programs and need no keys. The
-  security Boons and rea-amplify are for systems and artifacts you own or are
-  authorized in writing to work on.
-- If a Boon does not appear, check that `SKILL.md` is directly inside the Boon's
-  folder (for example `~/.claude/skills/craft-and-vibe/SKILL.md`), not one level
-  deeper, and that you started a new session.
+- Boons are instructions; they do not bundle programs, credentials or tool
+  permissions.
+- Security skills require ownership or written authorization for the specific
+  assessment.
+- If a local skill does not load, confirm that `SKILL.md` is directly inside
+  the skill folder and that the agent supports that location or format.
