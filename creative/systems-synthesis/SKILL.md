@@ -4,7 +4,7 @@ description: Design original systems by extracting high-level functions from ref
 license: Apache-2.0
 metadata:
   domain: creative
-  version: "0.3.0"
+  version: "0.4.0"
   status: experimental
 user-invocable: true
 ---
@@ -71,6 +71,29 @@ abilities, scenes or text.
 10. **Present in the requested form.** Explain the organizing idea, rules and
     interactions at the needed level. Use examples to demonstrate behavior.
     Mark unresolved choices instead of silently deciding them.
+
+## Optional open-source modeling tools
+
+Use these only when a diagram or executable model materially clarifies the
+system:
+
+- [Mermaid](https://github.com/mermaid-js/mermaid) — text-based flowcharts,
+  sequence diagrams and system maps.
+- [Graphviz](https://gitlab.com/graphviz/graphviz) — dependency graphs and
+  structured network diagrams.
+- [OpenFlowKit](https://github.com/openflowkit/openflowkit) — local-first
+  diagram canvas with agent/MCP workflows; review its current requirements
+  before connecting it.
+
+A diagram is a communication aid, not validation of the model. Keep the
+underlying rules and assumptions readable without the tool.
+
+**On activation:** decide whether the task benefits from a visual model or
+diagram. Check whether the current client can render Mermaid directly or
+whether a local tool is actually needed. Ask:
+"Would you like me to add or connect a free open-source diagramming tool for
+this project?" Do not install or connect anything automatically. If a simple
+Mermaid diagram is sufficient, avoid adding a dependency.
 
 ## Stop or narrow
 
