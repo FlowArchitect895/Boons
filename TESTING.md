@@ -96,7 +96,12 @@ Updated the README, installation guide, environment guide, integration guide
 and reference directory. External documentation was reviewed for Agensi MCP,
 REA upstream setup and Claude Code MCP guidance.
 
-**Not tested:** live Agensi authentication or MCP connection; Skills CLI
+**Agensi status:** The user confirmed that Agensi was tested during the earlier
+Boons experiments and worked as an integration route. This is user-reported
+validation; this documentation update did not repeat the connection test or
+independently verify every client/permission path.
+
+**Not tested in this documentation update:** Skills CLI
 installation; REA installation; Codex/Claude Code/local-model integration; or
 Kali/WSL command execution from this ChatGPT session. Documentation review is
 not an integration test.
