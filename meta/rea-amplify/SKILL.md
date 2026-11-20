@@ -4,7 +4,7 @@ description: Analyze authorized supplied artifacts or actual tool results, track
 license: Apache-2.0
 metadata:
   domain: meta
-  version: "0.3.0"
+  version: "0.4.0"
   status: experimental
 user-invocable: true
 ---
@@ -73,6 +73,37 @@ artifacts and tool results actually available in the session.
 
     The receiving skill must apply its own authorization and safety rules.
     This analysis does not prove permission for downstream activity.
+
+## Optional open-source analysis tools
+
+REA is a separate, optional MCP toolkit. Its upstream project documents a
+setup flow for supported agents:
+
+- [REA](https://github.com/morluto/rea) — agent-facing reverse-engineering
+  workflows and MCP tools. Review its current Node.js requirements, supported
+  clients and target-specific prerequisites before setup.
+- [Ghidra](https://github.com/NationalSecurityAgency/ghidra) — software
+  reverse-engineering suite.
+- [radare2](https://github.com/radareorg/radare2) — reverse-engineering
+  framework and command-line analysis tools.
+- [JADX](https://github.com/skylot/jadx) — Android DEX to Java decompiler.
+- [Binwalk](https://github.com/ReFirmLabs/binwalk) — firmware and file
+  extraction/analysis.
+
+Do not assume every artifact needs every tool. REA can analyze some formats
+without a separate native decompiler; other formats require specific providers.
+Check the REA guide for the artifact type and platform. Some commercial tools
+may appear in upstream compatibility lists; Boons recommends only the free,
+open-source options listed here.
+
+**On activation:** identify the artifact type and the analysis depth required.
+Check which tools are already available. Explain the smallest useful optional
+setup, then ask:
+"Would you like me to help integrate REA or one of these free tools into your
+agent/workspace?" Never install REA, Ghidra or other dependencies, modify MCP
+configuration, or inspect a local target without approval. If the client has no
+workspace/terminal access, request a supplied artifact or user-collected
+results instead.
 
 ## Stop or narrow
 
