@@ -33,6 +33,24 @@ compatibility guarantee or claim that an integration has been tested.
 | [MITRE CWE](https://cwe.mitre.org/) | Weakness classification |
 | [Ghidra](https://github.com/NationalSecurityAgency/ghidra) | Optional reverse-engineering framework |
 | [REA upstream](https://github.com/morluto/rea) | Optional reverse-engineering MCP toolkit |
+| [OWASP ZAP](https://github.com/zaproxy/zaproxy) | Open-source web application security testing |
+| [Semgrep CE](https://github.com/semgrep/semgrep) | Open-source static analysis engine; check edition boundaries |
+| [Trivy](https://github.com/aquasecurity/trivy) | Vulnerability and misconfiguration scanning |
+| [Gitleaks](https://github.com/gitleaks/gitleaks) | Secret detection in repositories and files |
+| [OWASP Amass](https://github.com/owasp-amass/amass) | Attack-surface mapping |
+| [Subfinder](https://github.com/projectdiscovery/subfinder) | Passive subdomain discovery |
+| [httpx](https://github.com/projectdiscovery/httpx) | HTTP service probing |
+| [Nuclei](https://github.com/projectdiscovery/nuclei) | Template-based security checks; active use needs authorization |
+| [pytest](https://github.com/pytest-dev/pytest) | Python testing |
+| [Ruff](https://github.com/astral-sh/ruff) | Python linting and formatting |
+| [Playwright](https://github.com/microsoft/playwright) | Browser automation and end-to-end tests |
+| [Godot](https://github.com/godotengine/godot) | Open-source game engine |
+| [Mermaid](https://github.com/mermaid-js/mermaid) | Text-based diagrams |
+| [Graphviz](https://gitlab.com/graphviz/graphviz) | Dependency and system graphs |
+| [Vale](https://github.com/errata-ai/vale) | Local prose/style linting |
+| [radare2](https://github.com/radareorg/radare2) | Reverse-engineering framework |
+| [JADX](https://github.com/skylot/jadx) | Android DEX decompiler |
+| [Binwalk](https://github.com/ReFirmLabs/binwalk) | Firmware and file analysis |
 
 ## Maintenance
 
