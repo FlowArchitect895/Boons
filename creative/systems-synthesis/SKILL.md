@@ -1,63 +1,43 @@
 ---
 name: systems-synthesis
-description: Synthesize original systems from patterns anywhere, power systems in fiction, the logic of a sport, a natural process, an everyday routine, and map them the user's own way, fantasy, serious, sci-fi or plain. Combine the functions of two systems and project them onto a real pattern, lay out the rules behind a genre, or build the structure for a book or game. Turns references into explicit rules, interactions, costs and edge cases that are original, never a copy. Use for worldbuilding, power or magic systems, game mechanics, narrative structure, or mapping one domain onto another.
+description: Design original systems by extracting high-level functions from references, then defining coherent rules, dependencies, feedback, constraints, trade-offs and failure behavior.
 license: Apache-2.0
 metadata:
   domain: creative
-  version: "0.1.0"
+  version: "0.2.0"
   status: experimental
 user-invocable: true
 ---
 
 # Systems synthesis
 
-A system is any set of parts whose interaction produces behavior: a power
-system, a story's rules, a sport, a nervous system, a daily habit. This skill
-reads the mechanism behind a reference, not its surface, and builds something
-new from how it works.
+A system is a set of interacting parts whose relationships produce behavior: a power system, story, sport, nervous system, business, learning process or routine. Read the mechanism behind a reference, not its surface, and build something new. The goal is not maximum complexity; it is a coherent system whose behavior and limits can be explained.
 
 ## Ways in
 
-- **Combine.** Take the functions of two or more systems and fuse them into one
-  coherent new set of rules.
-- **Map across domains.** Project the mechanism of one system onto another, for
-  example the escalation logic of a competition onto a learning process, or a
-  biological feedback loop onto a game economy.
-- **Read the meta.** Lay out the shared underlying structure of a genre or a
-  body of work, so the user can see the pattern and write their own.
-- **Build from scratch.** Design an original system to a tone and purpose the
-  user names, in any register from playful to rigorous.
+- **Combine:** fuse functions of two or more systems.
+- **Map across domains:** project a mechanism from one domain onto another.
+- **Read the meta:** identify shared underlying structure in a genre or body of work.
+- **Build from scratch:** design an original system for a stated purpose, tone and medium.
 
-In every case the work is original: references supply high-level functions
-(pacing, cost, constraint, feedback, escalation), never characters, named
-abilities, scenes or text.
+References provide high-level functions (pacing, constraint, feedback, escalation, adaptation, resource pressure), not protected characters, named abilities, scenes or text.
 
 ## Workflow
 
-1. Ask what the system is for, who will use it, and what tone or medium should
-   shape the result.
-2. List the domains or references the user wants considered. For each one,
-   capture only broad functions such as pacing, feedback, resource pressure, or
-   choice; keep observation separate from invention.
-3. Propose a central organizing idea, then define the system's inputs, rules,
-   outputs, limits, and failure cases.
-4. Explain how the parts influence one another. Add costs, trade-offs, and
-   meaningful counterplay where they fit the user's goal.
-5. Stress-test the design with ordinary use, edge cases, and combinations
-   likely to break its rules. Identify unresolved choices instead of deciding
-   them silently.
-6. Present the new design in the user's requested form, with a few examples
-   that demonstrate the rules rather than imitate any reference.
+1. **Establish purpose and scale.** Identify purpose, participants, environment, medium and tone. Determine whether the user wants a concept, practical framework, game mechanic, narrative system or implementable specification. Ask when a missing choice materially changes design.
+2. **Separate source from invention.** For each reference, distinguish **Observed** (directly present), **Interpreted** (mechanism inferred) and **Proposed** (new rule or relationship). Do not present inference as fact or proposal as source material.
+3. **Find the organizing principle.** State the central idea briefly. Explain why the mechanisms belong together, what each contributes and what is excluded. Avoid superficial combinations that borrow only names or aesthetics.
+4. **Define the anatomy.** Specify only necessary components: actors/entities, inputs/resources, starting conditions, state variables, rules/decisions/transitions, outputs, boundaries and failure states. Define key terms consistently. Refine any rule that cannot be applied.
+5. **Map dependencies and feedback.** Show what depends on what and how changes propagate. Identify reinforcing/balancing loops, delays, bottlenecks and runaway behavior where relevant. Distinguish causal dependency from thematic association. Mark essential versus optional components.
+6. **Make costs real.** Give advantages meaningful constraints. Consider time, energy, attention, resources, risk, opportunity cost, complexity, maintenance and access. Costs should affect choices, not merely decorate them. Add counterplay, recovery or ways to interrupt dominant strategies when useful.
+7. **Stress-test before polishing.** Test ordinary use; boundary conditions (minimum, maximum, scarce, empty or overloaded); interactions between components; exploits or dominant strategies; failure and recovery; and growth over time when state accumulates. Check contradictions, circular dependencies, infinite loops, unbounded combinations, inaccessible resources and runaway feedback. Use a worked example or small model when it makes behavior concrete.
+8. **Revise for coherence and simplicity.** Correct contradictions. Remove components that add complexity without meaningful behavior. Prefer a small rule set with clear interactions over disconnected feature lists. State assumptions and what changes if they fail.
+9. **Present in the requested form.** Explain the organizing idea, rules and interactions at the needed level. Use examples to demonstrate behavior. Mark unresolved choices instead of silently deciding them.
 
-## Stop or narrow the work
+## Stop or narrow
 
-If a request depends on reproducing recognizable protected characters,
-signature abilities, scenes, or text, decline that part and offer a distinct
-design based on broad functional traits. Do not claim that a proposal is
-canon unless the user approves it.
+If the request depends on reproducing recognizable protected characters, signature abilities, scenes or text, decline that part and offer a distinct design based on broad functional traits. Do not claim a proposal is canon unless approved. If purpose or core constraints are too ambiguous, ask rather than hide decisions inside assumptions.
 
 ## Verification
 
-Check the result for internal contradictions, unbounded combinations, and
-unclear costs. Confirm that named references inform only high-level functions
-and that the resulting expression, terminology, and examples are original.
+Check that observations, interpretations and inventions are distinguishable; terms and rules are consistent; dependencies and feedback are understandable; costs affect choices; ordinary use and meaningful edge cases are tested; contradictions, unbounded loops and dominant exploits are addressed; complexity is justified; and references inform only high-level functions. State unresolved uncertainties. A stress-tested proposal is not proof that a real-world system will behave exactly as modeled.

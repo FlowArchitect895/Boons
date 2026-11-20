@@ -1,62 +1,119 @@
 ---
 name: craft-and-vibe
-description: Build anything in code, from a quick script to a game, dashboard, simulator, visualization or tool, by fusing disciplined engineering (read first, small reversible changes, tests, verification) with creative range (the user describes shape, function and feel, and the build reads that intent instead of demanding a spec). Use when someone says "build me", "make something that", "I want a tool that feels like", hands over a one-line concept, or asks to change, fix or extend existing code.
+description: Build code by combining creative intent with disciplined engineering, explicit acceptance criteria, risk-based verification and a clean handoff.
 license: Apache-2.0
 metadata:
   domain: coding
-  version: "0.2.0"
+  version: "0.4.0"
   status: experimental
 user-invocable: true
 ---
 
 # Craft and vibe
 
-Most people describe software by what it should do and how it should feel, not
-by a specification. This skill treats that description as the brief. It reads
-the intent, makes the calls that can be inferred, and holds the build to real
-engineering standards so creative work is also sound work.
-
-One loop runs every build: **shape, weight, feel, build, prove, exit.**
+Treat the user's description as the brief. Infer what is safe to infer, ask when ambiguity changes the build, and apply engineering standards appropriate to the risk. The loop is **shape, weight, feel, build, prove, exit**.
 
 ## Workflow
 
-1. **Read the shape.** Settle four things before writing code:
-   - what it does (function);
-   - what it should be like to use (experience);
-   - the smallest version that delivers both (scope);
-   - the output form (script, web page, component, CLI, notebook, game file).
-   In an existing codebase, also read the relevant files, the project's
-   instructions and its tests first, and note the current state of version
-   control so unrelated work is preserved.
-2. **Decide the weight.** Ask one question before any visual or structural
-   choice: does this need to be solid and plain, or expressive and rich? A
-   throwaway check is not a product. Match effort to the answer, and do not add
-   a framework, dependency or abstraction the scope does not earn.
-3. **Catch the feel.** Name the few details that make the thing feel like what
-   the user asked for: the pace of an interaction, the shape of an output, the
-   one moment that should land. Carry those into the build deliberately; they
-   are the difference between working and good.
-4. **Build the smallest whole.** Write the least code that delivers the shape
-   and the feel as one working piece, not a stub. Follow the existing patterns
-   of the codebase. Make changes small and reversible, and keep unrelated code
-   and untracked work untouched.
-5. **Prove it.** Run it. Add tests for the logic that would hurt if it broke,
-   and run them. For something visual or interactive, exercise the path the
-   user described and confirm it behaves. Never report a test as passing
-   without having run it, and never call a build done you have not run.
-6. **Exit clean.** Hand back working code with a short note: what it does, how
-   to run it, what you inferred rather than were told, and what you did not
-   build or verify. Offer the next increment rather than gold-plating this one.
+1. **Read the shape.** Establish function, intended experience, smallest useful scope and output form. Identify users and runtime environment when relevant. In an existing project, inspect instructions, relevant source, tests, dependencies and version-control state before editing. Preserve unrelated and untracked work.
+2. **Set the weight.** Match effort to consequence, complexity, lifespan and reversibility. A disposable helper does not need product infrastructure. Software handling accounts, private data, money, safety or security boundaries deserves stronger controls. Prefer the simplest architecture that meets the need; justify dependencies and abstractions. State assumptions and ask when an unresolved choice changes architecture, data handling, security or experience.
+3. **Catch the feel.** Identify the few details that matter: interaction pace, visual hierarchy, response behavior, accessibility, tone or a key moment. Translate them into observable acceptance criteria. Keep functional requirements distinct from visual preferences; polish is not proof of correctness.
+4. **Define the smallest whole.** Write a compact acceptance checklist for the core journey and constraints. Include expected inputs, outputs, errors and boundary conditions. Build a coherent working slice, follow project conventions, make reversible changes, and preserve unrelated code and data. Handle invalid input and expected failures deliberately.
+5. **Build with safeguards.** Validate inputs at trust boundaries. Never hardcode credentials. Consider permissions, data exposure, injection, dependency provenance and destructive side effects where relevant. Minimize data collection. Consider confirmation, rollback or recovery for consequential state changes. Do not install, access external services, deploy, publish or push without authorization.
+6. **Prove it.** Choose checks by risk: unit tests for logic, integration tests for boundaries, end-to-end tests for critical journeys, and manual inspection for visual details. Test normal use, invalid input, empty/missing data, boundaries, failure paths and relevant permissions. For fixes, include a regression check. Inspect diffs for unintended changes. Exercise visual/interactive paths, including responsiveness and keyboard access where applicable. If a check cannot run, say why. Never report an unrun test as passing.
+7. **Exit clean.** Deliver the result, what changed, how to run it, exact checks and outcomes, assumptions, limitations and unverified areas. Mention operational requirements or migrations. Offer the next useful increment without gold-plating.
 
-## Stop or narrow the work
 
-Stop and ask when the intent is genuinely ambiguous in a way that changes the
-build, when a request needs a secret, an install, a push, a deployment or a
-destructive change, or when the scope is growing past the smallest whole. State
-an assumption and proceed only when a safe, reversible first step is clear.
+## Game creation and iteration
 
-## Verification
+Treat a game as an interactive system, not merely a visual coding task. Use
+this focused pass inside the main workflow whenever the output is a game or
+playable prototype:
 
-Confirm the code runs, its tests were actually run and pass, the shape and the
-feel the user asked for are both present, and unrelated work was preserved.
-Report exactly what was run and what was left unverified.
+1. **Define the player promise.** State the fantasy or experience, the core
+   player action, the short gameplay loop, the intended session length and the
+   smallest playable slice. Separate essential mechanics from optional
+   content. Do not begin by accumulating features.
+2. **Map the game state.** Identify states and transitions such as title,
+   playing, paused, upgrade choice, wave transition, victory, defeat and restart.
+   Record the state variables that matter: health, resources, cooldowns, score,
+   wave, inventory, progression and unlocks. Make one source of truth for each
+   value; avoid duplicated state that can drift.
+3. **Design mechanics as rules.** For each mechanic, specify trigger, cost,
+   effect, duration, limits, interaction with other mechanics and failure or
+   cancellation behavior. For resource systems, define sources, sinks, caps,
+   costs and whether any loop can generate unlimited resources. For combat,
+   define hit rules, damage, invulnerability, enemy roles, projectile behavior
+   and readable feedback. Keep tuning values easy to inspect and change.
+4. **Build the playable loop first.** Prioritize input, movement, collision,
+   one meaningful challenge, feedback, success/failure and restart. Add weapons,
+   upgrades, enemies, bosses, effects, progression and polish in increments.
+   Each new system must connect to the existing loop rather than exist as a
+   disconnected feature.
+5. **Protect feel and readability.** Test whether controls respond as expected,
+   threats are distinguishable, damage and cooldowns are legible, effects do
+   not obscure important information, and the player understands why a state
+   changed. Treat animation and visual polish as feedback, not substitutes for
+   correct mechanics. Consider keyboard-only use, focus, contrast, scaling and
+   reduced-motion needs where relevant.
+6. **Balance through evidence.** Inspect time-to-kill, damage received, resource
+   income/spending, upgrade frequency, enemy pressure, cooldown uptime and
+   viable strategies. Use repeatable scenarios or seeded runs when possible.
+   Do not call a game balanced from one successful playthrough; record the
+   tested build, conditions and observed strategy. Avoid tuning solely to make
+   the game easier or harder without reference to the intended experience.
+7. **Keep inspiration transformative.** Borrow high-level functions, design
+   principles or genre conventions rather than reproducing protected
+   characters, art, text, music, distinctive scenes or named expression.
+   Develop original mechanics, names and presentation; disclose inspirations
+   when they materially shape the result.
+
+## Game testing and release checks
+
+Use several layers; no single test proves a game works:
+
+- **Rule/unit tests:** damage, collision boundaries, cooldowns, costs, resource
+  caps, drop rates, upgrade prerequisites, affinity/path selection, boss phases
+  and win/loss conditions.
+- **System/integration tests:** weapon + enemy interactions, upgrades + stats,
+  abilities + boss states, resource rewards + spending, pause + timers, and
+  wave transitions + progression. Test interactions, not only each feature in
+  isolation.
+- **State and exploit tests:** repeated pause/resume, death during an effect,
+  restart after victory/defeat, upgrade selection at the last valid moment,
+  insufficient resources, maxed upgrades, simultaneous hits, cooldown boundary
+  frames, and any action that could duplicate rewards or bypass a cost.
+- **Playable end-to-end tests:** complete the opening loop, survive or lose a
+  run, reach upgrades, test each control and ability, trigger a boss or terminal
+  state, and restart. Include a fresh run after a long run to detect leaked
+  state.
+- **Presentation and platform checks:** launch in the intended browser/runtime;
+  inspect console errors, viewport scaling, input focus, keyboard and pointer
+  controls, pause behavior, readability, frame-rate symptoms and audio behavior
+  if audio exists. Test the actual exported deliverable, not only a development
+  preview.
+- **Balance and usability review:** repeat comparable runs, record outcomes,
+  identify dominant or unusable strategies, and distinguish a bug from a tuning
+  preference. Have a human play where possible; automated checks cannot fully
+  judge fun, clarity or pacing.
+
+For each issue, capture build/version, reproduction steps, expected behavior,
+actual behavior, severity, evidence and regression coverage. Fix the rule at its
+source rather than patching only the visible symptom. Re-run affected tests and
+at least one adjacent gameplay path. If the runtime or browser is unavailable,
+label code inspection and static checks as such; do not imply that the game was
+played or visually verified.
+
+## Stop or narrow
+
+Pause before proceeding if ambiguity changes architecture or safety; credentials or permissions are missing; the next step installs, publishes, pushes, deploys, overwrites or deletes; an external dependency adds material cost/privacy/security implications; or scope expands beyond the smallest useful whole. Proceed only with a safe, reversible step and stated assumptions.
+
+## Verification and handoff
+
+Report separately:
+- **Implemented:** behavior present in the code.
+- **Tested:** exact commands, cases or paths actually exercised and results.
+- **Not tested:** unavailable environments, integrations or checks not run.
+- **Known risks:** unresolved defects, assumptions and operational dependencies.
+
+A preview or written code is not proof. Confirm acceptance criteria, honest test reporting, regression consideration and preservation of unrelated work. If a test fails, report it and do not call the build fully passing.

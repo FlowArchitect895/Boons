@@ -1,53 +1,45 @@
 # Testing
 
-Status: all six skills passed a fresh-session test on 2026-11-18.
+## Recorded tests
 
-| Skill | Fresh-session task | Result |
+### 2026-11-18: six-skill baseline
+
+| Skill | What was tested | Result |
 |---|---|---|
-| `security-methods` | Review a supplied snippet with 3 planted issues; evidence-labeled findings | Pass (2026-11-18): all 3 found, none invented, labeled, non-target-facing |
-| `bug-bounty-recon` | Triage 6 synthetic findings against a synthetic scope | Pass (2026-11-18): 6/6 classified, scope held over severity, no out-of-scope proposed |
-| `craft-and-vibe` | Rebuild a stripped binary's transform from rea-amplify findings; tests + 408-input differential sweep | Pass (2026-11-18, paid Claude Code) |
-| `systems-synthesis` | Synthesize an original skill-growth system (tide + compounding) and stress-test it | Pass (2026-11-18): stress test caught a real contradiction, fixed, re-run consistent |
-| `voice-and-edit` | Tighten a factual draft and verify preservation | Pass (2026-11-18): 69->49 words, all figures/name/7 hedges kept, no certainty raised |
-| `rea-amplify` | Recover an owner-authored stripped ELF's algorithm (Ghidra inventory + objdump), hand findings to craft-and-vibe | Pass (2026-11-18, paid Claude Code) |
+| `security-methods` | Review a supplied code sample containing three planted issues | All three found; no invented findings; evidence and safe fixes recorded |
+| `bug-bounty-recon` | Classify six synthetic findings against a defined scope | 6/6 correctly classified; out-of-scope findings excluded despite severity |
+| `craft-and-vibe` + `rea-amplify` | Recover a stripped program's logic and rebuild it | 408 inputs matched with zero mismatches; three unit tests passed |
+| `systems-synthesis` | Create and stress-test an original skill-growth system | A contradiction was found, corrected and retested |
+| `voice-and-edit` | Tighten a factual draft while preserving its meaning and details | 69 to 49 words; all figures, the name and seven hedges preserved; certainty not increased |
 
-The package validator passes and the exact-phrase provenance check is clean
-(run 2026-11-18 against the private Dragon source skills: no 8-word overlap).
-These are separate from the behavioral tests below. Passing either does not mean
-a skill is effective; each still needs a fresh-session task test.
+The paired reverse-engineering test used Ghidra inventory and disassembly. Ghidra did not identify `main` as a procedure in the stripped PIE, so the logic was recovered from instructions instead. This was recorded as a limitation, not hidden as a pass.
 
-## Distribution checks
+### 2026-11: iterative interactive-build experiment
 
-- GitHub install through the Skills CLI: Not run. This draft has no standalone
-  public repository URL.
-- Optional Ghidra integration: Not run. Ghidra is documented as an optional
-  user-provided tool, not a package dependency.
-- GitHub links in `README.md`: Not live-checked in this session.
+**What was made:** An interactive game prototype was created and expanded over several iterations, adding combat, progression choices, abilities, enemies and additional gameplay systems.
 
-## 2026-11-18 paired test: rea-amplify + craft-and-vibe
+**What was tested:** The prototype was played through repeated feedback-and-revision cycles. Tests included access to key systems, ability/signature paths, progression choices, boss encounters and a 500-frame combat simulation.
 
-An owner-authored C program (a 32-bit integer transform) was compiled and
-stripped. With no access to the source, `rea-amplify` recovered its algorithm
-from the stripped ELF: REA/Ghidra gave the procedure and import inventory and
-the entry-to-main pointer, and objdump disassembly of main (file offset 0x10a0)
-showed the logic (FNV-1a over four little-endian bytes, a final xor-shift, mod
-100000). `craft-and-vibe` rebuilt it as a clean, documented Python module with
-tests. The rebuild reproduced the real binary's output on all 408 inputs tested
-(8 edge values plus 400 random), zero mismatches, and 3 unit tests pass.
+**What was discovered:** Early play exposed inaccessible or unclear interactions, broken ability paths, confusing progression choices and a boss-shield interaction that did not behave as intended. The experiment also showed that a feature being present in the code did not guarantee that a player could discover or use it correctly.
 
-Honest limitation found: Ghidra's default analysis did not define `main` as a
-procedure in this stripped PIE, so the decompiler returned no body for it; the
-logic was recovered at the instruction level instead. The skill handled this by
-falling back to disassembly, as its workflow intends.
+**What changed:** Later iterations corrected the reported interaction and combat issues, clarified and expanded progression, and added further gameplay options and enemy variety. The combat simulation provided a repeatable logic check, but it did not replace hands-on playtesting.
 
-Artifacts (scratch, not committed): the C source, binary and the Python rebuild
-live under the session scratchpad and `~/projects/python/vibe-test/`.
+**What this taught the skills:**
+- `craft-and-vibe`: treat interactive work as a playable experience, not just generated code; test the actual user path, verify key interactions and regressions after changes, and clearly separate simulated checks from real playtests.
+- `systems-synthesis`: examine how features interact as a whole, not only as isolated components; use observed failures to refine system relationships and progression.
+- `voice-and-edit`: compress playtest feedback into clear, actionable findings without losing the distinction between what was observed, what was changed and what remains uncertain.
 
-## 2026-11-18 tests for the other four
+This is a record of the experiment and its reported checks, not a claim that every gameplay path, browser rendering condition or balance issue was exhaustively verified.
 
-- **voice-and-edit:** a 69-word factual draft was tightened to 49 words in a direct voice. A token check confirmed all six figures (12, 3, 420, 15, 30, 2024), the name (Mensah), and all seven hedges survived, and no certainty word was added.
-- **bug-bounty-recon:** six synthetic findings were triaged against a synthetic scope. All six matched the known-correct in/out answer. A critical (default creds on an excluded internal host) and a high (XSS on an excluded blog) were both correctly excluded, so scope held over severity, and no out-of-scope asset was proposed for testing.
-- **security-methods:** a supplied Python snippet with three planted issues (command injection, hardcoded secret, SQL injection) was reviewed. All three were found at the right lines, none invented, each labeled verified/inferred/assumed with a proportionate fix and a local confirmation step, and nothing target-facing was proposed.
-- **systems-synthesis:** an original skill-growth system was synthesized from the functions of a tide and of compounding, with original terminology. Its stress-test step surfaced a real internal contradiction (the retained floor could exceed the recorded peak); the design was corrected and the re-run was consistent, with the steady builder ending far above the all-push sprinter, matching the intent. References stayed at the function level; no protected work was reproduced.
+## Package and distribution checks
 
-All four are judgment-assisted tests run by paid Claude Code; voice-and-edit and bug-bounty-recon were checked mechanically against a known answer, security-methods against planted issues, systems-synthesis against a runnable model of its own rules.
+The package validator and exact-phrase provenance check passed on 2026-11-18 against the then-current package and source material. These checks are separate from behavioral tests and do not establish that a skill is effective.
+
+- Skills CLI installation: not run.
+- Optional Ghidra integration as a packaged dependency: not tested; Ghidra remains optional and user-provided.
+- GitHub links: not live-checked in that test session.
+- Fresh-session behavioral tests of the later skill refinements: pending.
+
+## Testing principle
+
+Record what was actually built, exercised, discovered and changed. Keep observed results separate from assumptions. Name simulations as simulations, preserve known limitations, and never report an unrun test as passing.
